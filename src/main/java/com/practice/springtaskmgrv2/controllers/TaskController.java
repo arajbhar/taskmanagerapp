@@ -3,12 +3,10 @@ package com.practice.springtaskmgrv2.controllers;
 import com.practice.springtaskmgrv2.entities.TaskEntity;
 import com.practice.springtaskmgrv2.services.TaskServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TaskController {
@@ -23,9 +21,16 @@ public class TaskController {
         return taskServices.createTask(task);
     }
 
+    //get all task
     @GetMapping("/tasks")
     public List<TaskEntity> getAllTask(){
         return taskServices.getAllTasks();
+    }
+
+    @GetMapping("/tasks/{id}")
+    public Optional<TaskEntity> getTaskById(@PathVariable(value = "id") Integer taskId){
+        return taskServices.getTaskById(taskId);
+
     }
 
 

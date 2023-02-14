@@ -3,6 +3,7 @@ package com.practice.springtaskmgrv2.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -21,6 +22,7 @@ public class TaskEntity extends BaseEntity{
     Boolean completed;
 
     @Column(name = "due_Date",nullable = true)
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     Date dueDate;
 
 
